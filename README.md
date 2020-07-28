@@ -31,5 +31,5 @@
 4. `yarn run lint -- --fix` 按照StandardJS格式 格式化整个src代码（部分代码无法格式比如 ‘==’ 、等）
 
 - master 维护人: fwd001
-- [github地址](https://github.com/fwd001/vue-template](https://github.com/fwd001/vue-template)
+- [github地址](https://github.com/fwd001/vue-template-master)
 )
