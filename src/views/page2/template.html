@@ -1,0 +1,68 @@
+<div id="page2">
+  <!-- 查询 -->
+  <div class="query">
+    <div class="mb5 mr20">
+      <label for="keyId">keyId:</label>
+      <a-input style="width: 200px;" id="keyId" placeholder="input keyId" v-model="query.keyId" />
+    </div>
+    <div class="mb5 mr20">
+      <a-range-picker
+        :value="query.dateRange"
+        @change="onDateChange"
+        :disabledDate="disabledDate"
+        :disabledTime="disabledRangeTime"
+        :showTime="{
+            hideDisabledOptions: true,
+            defaultValue: [moment('00:00:00', 'HH:mm:ss'), moment('11:59:59', 'HH:mm:ss')]
+        }"
+        format="YYYY-MM-DD HH:mm:ss"
+      />
+    </div>
+    <div class="mb5 mr20">
+      <a-button @click="handleQuery" type="primary">查询</a-button>
+    </div>
+    <div class="mb5">
+      <router-link :to="`/page2/add`" data-id="4" v-if="authority(4)"
+        >新增页面</router-link
+      >
+    </div>
+  </div>
+
+  <!-- 表格 -->
+  <div class="table">
+    <a-table
+      rowKey="keyid"
+      :columns="columns"
+      :dataSource="list"
+      :pagination="false"
+    >
+      <span slot="status" slot-scope="text">
+        {{text === 1 ? '启用' : '禁用'}}
+      </span>
+      <span slot="action" slot-scope="text, record">
+        <a href="javascript:;" @click="toDetail(record)">查看</a>
+        <a-divider type="vertical" />
+        <a href="javascript:;" @click="handleChangeStatus(record)"
+          >{{ record.status === 1 ? '禁用' : '启用' }}</a
+        >
+      </span>
+    </a-table>
+    <!-- 分页组建 -->
+    <a-pagination
+      class="pagination"
+      :pageSizeOptions="['10', '20', '30', '40']"
+      :pageSize="pageSize"
+      :total="total"
+      v-model="currentPage"
+      :showTotal="setPageInfo"
+      @change="onPageChange"
+      @showSizeChange="onPageSizeChange"
+      :itemRender="itemRender"
+      showSizeChanger
+    >
+      <template slot="buildOptionText" slot-scope="props">
+        <span>{{ props.value }}条/页</span>
+      </template>
+    </a-pagination>
+  </div>
+</div>

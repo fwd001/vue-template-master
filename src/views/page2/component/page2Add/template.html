@@ -1,0 +1,118 @@
+<div id="page2">
+  <a-form :form="form" @submit="handleSubmit">
+    <a-form-item
+      label="标签"
+      :label-col="{ span: 5 }"
+      :wrapper-col="{ span: 12 }"
+    >
+      <a-input
+        v-decorator="[
+                    'lable',
+                    { rules: [
+                        { max: 20, message: '长度不能超过20' },
+                        {
+                            validator: lableValidFunction
+                        }
+                    ] }
+                ]"
+      />
+    </a-form-item>
+    <a-form-item
+      label="算法"
+      :label-col="{ span: 5 }"
+      :wrapper-col="{ span: 12 }"
+    >
+      <a-select
+        v-decorator="[
+                                        'encodeType',
+                                        { rules: [{ required: true, message: '请选择算法！' }] }
+                                    ]"
+        placeholder="请选择算法！"
+      >
+        <a-select-option value="20-1024">
+          RSA-1024
+        </a-select-option>
+        <a-select-option value="20-2048">
+          RSA-2048
+        </a-select-option>
+        <a-select-option value="22-256">
+          SM2-256
+        </a-select-option>
+        <a-select-option value="21-1024">
+          DSA-1024
+        </a-select-option>
+      </a-select>
+    </a-form-item>
+    <a-form-item
+      label="有效期"
+      :label-col="{ span: 5 }"
+      :wrapper-col="{ span: 12 }"
+    >
+      <a-select
+        v-decorator="[
+                                        'validityPeriod',
+                                        {
+                                            rules: [
+                                                { required: true, message: '请选择有效期！' }
+                                            ],
+                                            initialValue: 0
+                                        }
+                                    ]"
+        placeholder="请选择有效期！"
+        @change="handleDateChange"
+      >
+        <a-select-option :value="0">
+          永不过期
+        </a-select-option>
+        <a-select-option :value="1">
+          1天
+        </a-select-option>
+        <a-select-option :value="2">
+          2天
+        </a-select-option>
+        <a-select-option :value="3">
+          3天
+        </a-select-option>
+        <a-select-option :value="5">
+          5天
+        </a-select-option>
+        <a-select-option :value="7">
+          7天
+        </a-select-option>
+        <a-select-option :value="15">
+          15天
+        </a-select-option>
+        <a-select-option :value="30">
+          30天
+        </a-select-option>
+        <a-select-option :value="60">
+          60天
+        </a-select-option>
+      </a-select>
+    </a-form-item>
+    <a-col :offset="5" class="date" v-show="date">到期时间：{{ date }}</a-col>
+
+    <a-form-item
+      label="状态"
+      :label-col="{ span: 5 }"
+      :wrapper-col="{ span: 12 }"
+    >
+      <span>启用</span>
+    </a-form-item>
+    <a-form-item
+      label="创建人"
+      :label-col="{ span: 5 }"
+      :wrapper-col="{ span: 12 }"
+    >
+      <span>小王22222</span>
+    </a-form-item>
+    <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
+      <a-button type="primary" @click="$router.go(-1)">
+        返回
+      </a-button>
+      <a-button style="margin-left: 20px;" type="primary" html-type="submit">
+        新增
+      </a-button>
+    </a-form-item>
+  </a-form>
+</div>

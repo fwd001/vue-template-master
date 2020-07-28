@@ -1,0 +1,58 @@
+{
+    "code": "000000",
+    "data": {
+        "nickname": "test222",
+        "userPermission": [
+            {
+                "code": "home",
+                "level": 1,
+                "name": "首页",
+                "id": 0,
+                "parentId": 0
+            },
+            {
+                "code": "page",
+                "level": 1,
+                "name": "页面1",
+                "children": null,
+                "id": 1,
+                "parentId": 0
+            },
+            {
+                "code": "add",
+                "level": 2,
+                "name": "页面1新增",
+                "children": null,
+                "id": 2,
+                "parentId": 1
+            },
+            {
+                "code": "page",
+                "level": 1,
+                "name": "页面2",
+                "children": null,
+                "id": 3,
+                "parentId": 0
+            },
+            {
+                "code": "add",
+                "level": 2,
+                "name": "页面2新增",
+                "children": null,
+                "id": 4,
+                "parentId": 3
+            },
+            {
+                "code": "detail",
+                "level": 2,
+                "name": "页面2详情",
+                "children": null,
+                "id": 5,
+                "parentId": 3
+            }
+        ],
+        "status": "1",
+        "userLevel": "2"
+    },
+    "msg": "成功"
+}
